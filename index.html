@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
             --color-light-grey: #f0f4f8;
             --color-medium-grey: #e2e8f0;
             --color-dark-grey: #64748b;
-            --color-accent: #00509d; /* Deep Ocean Blue (New UMT Theme Accent) */
+            --color-accent: #00509d; /* Deep Ocean Blue (UMT Theme Accent) */
             --color-text-primary: #1e293b;
             --color-text-secondary: #475569;
             --border-radius: 12px;
@@ -44,24 +44,65 @@
             grid-auto-rows: minmax(180px, auto); /* Consistent row height for better layout */
         }
 
-        /* 3. Grid Item Styling */
+        /* 3. Grid Item Styling & Hover Effect */
         .grid-card {
             background-color: var(--color-white);
             border-radius: var(--border-radius);
             padding: 20px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
             border: 1px solid var(--color-medium-grey);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            position: relative; 
+            z-index: 1; /* For stacking context */
         }
 
         .grid-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            transform: scale(1.01);
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* --- START: PROFILE CARD BACKGROUND IMAGE STYLES --- */
+        .card-profile {
+            grid-column: span 2; 
+            grid-row: span 2; 
+            
+            /* Background Image Properties */
+            background-image: url('bg.jpg'); /* 1. Set the image path */
+            background-size: cover;          /* 2. Ensure image covers the entire card */
+            background-position: center;     /* 3. Center the image */
+            background-repeat: no-repeat;    /* 4. Prevent image tiling */
+            color: var(--color-white);       /* 5. Change text color for contrast */
         }
 
-        /* Card Content Styling */
+        /* Adjust colors inside the profile card for readability over the image */
+        .card-profile .card-title,
+        .card-profile .accent-text,
+        .card-profile .social-links a {
+            color: #b7e0ff; /* A lighter blue accent */
+        }
+        
+        .card-profile .card-header,
+        .card-profile .card-text {
+            color: #d1d9e2; /* Light grey text */
+        }
+        
+        /* Optional: Add a subtle overlay for better text readability */
+        .card-profile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35); /* Dark semi-transparent overlay */
+            border-radius: var(--border-radius);
+            z-index: -1;
+        }
+        /* --- END: PROFILE CARD BACKGROUND IMAGE STYLES --- */
+
+        /* Card Content Styling (General) */
         .card-header {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -83,7 +124,7 @@
             color: var(--color-text-secondary);
             font-size: 1rem;
             line-height: 1.6;
-            flex-grow: 1; /* Allows text to push other content down */
+            flex-grow: 1; 
         }
 
         .social-links a {
@@ -105,11 +146,11 @@
         }
 
         /* 4. Desktop Layout (Grid Span) */
-        .card-profile { grid-column: span 2; grid-row: span 2; }
         .card-location { grid-column: span 1; grid-row: span 1; justify-content: center; align-items: center; text-align: center; }
-        .card-techstack { grid-column: span 1; grid-row: span 2; }
+        .card-techstack { grid-column: span 1; grid-row: span 1; }
         .card-case-study { grid-column: span 2; grid-row: span 1; }
         .card-hobby { grid-column: span 1; grid-row: span 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .card-reflection { grid-column: span 1; grid-row: span 1; }
         .card-playlist { grid-column: span 4; grid-row: span 1; }
 
         /* Utility for Centering in small cards */
@@ -160,7 +201,7 @@
                 </p>
             </div>
             <div class="social-links">
-                <span class="card-header">Connect</span>
+                <span class="card-header">Connect (Links Updated)</span>
                 <p style="margin-top: 5px;">
                     <a href="#" target="_blank">LinkedIn</a>
                     <a href="#" target="_blank">GitHub</a>
@@ -173,19 +214,18 @@
             <p class="card-header">Current Campus</p>
             <h3 class="card-title" style="font-size: 1.8rem;">UMT, Kuala Nerus</h3>
             <div class="card-text" style="font-size: 0.9rem;">
-                <span class="accent-text">Current Time: [2:31 PM]</span>
+                <span class="accent-text">Current Time: 3:22 PM</span>
             </div>
         </section>
 
         <section class="grid-card card-techstack">
-            <h2 class="card-title">🔬 Core Competencies</h2>
-            <div class="card-text">
-                <p class="card-header">Key Skills & Subjects</p>
-                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
-                    <li style="margin-bottom: 8px;">• <span class="accent-text">Food Chemistry</span> (Advanced)</li>
-                    <li style="margin-bottom: 8px;">• Food <span class="accent-text">Microbiology</span></li>
-                    <li style="margin-bottom: 8px;">• Data Management (<span class="accent-text">Excel</span>)</li>
-                    <li style="margin-bottom: 8px;">• Instrumental Lab Analysis</li>
+            <p class="card-header">Key Skills & Subjects</p>
+            <h2 class="card-title" style="font-size: 1.3rem; margin-bottom: 0;">Core Competencies</h2>
+            <div class="card-text" style="font-size: 0.9rem; margin-top: 8px;">
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>• <span class="accent-text">Food Chemistry</span></li>
+                    <li>• <span class="accent-text">Microbiology</span></li>
+                    <li>• Lab Analysis</li>
                 </ul>
             </div>
         </section>
@@ -207,11 +247,20 @@
             </div>
         </section>
 
+        <section class="grid-card card-reflection">
+            <p class="card-header">My Research Vision</p>
+            <h2 class="card-title" style="font-size: 1.3rem; margin-bottom: 0;">Why Food Tech Matters in Malaysia</h2>
+            <div class="card-text" style="font-size: 0.9rem; margin-top: 8px;">
+                Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.
+            </div>
+        </section>
+
+
         <section class="grid-card card-playlist">
             <h2 class="card-title" style="font-size: 1.2rem; margin-bottom: 0;">🎧 Focus Playlist</h2>
             <p class="card-header" style="margin-top: 5px;">Ambient & Deep Focus for Lab Work</p>
             <div class="card-text" style="font-style: italic; font-size: 0.9rem; margin-top: 10px; color: var(--color-dark-grey);">
-                [ Placeholder for a real embedded music player (e.g., Lofi Hip-Hop or Classical Music). ]
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/312z6PZ8wwREck8613PkJk?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </section>
 
