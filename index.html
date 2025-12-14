@@ -1,0 +1,221 @@
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIK NURHUSNINA - Student Bento Grid Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 1. Global Reset & Font */
+        :root {
+            /* Colors */
+            --color-white: #ffffff;
+            --color-light-grey: #f0f4f8;
+            --color-medium-grey: #e2e8f0;
+            --color-dark-grey: #64748b;
+            --color-accent: #00509d; /* Deep Ocean Blue (New UMT Theme Accent) */
+            --color-text-primary: #1e293b;
+            --color-text-secondary: #475569;
+            --border-radius: 12px;
+            --grid-gap: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light-grey);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        /* 2. Bento Grid Container */
+        .bento-grid {
+            display: grid;
+            gap: var(--grid-gap);
+            max-width: 1200px;
+            margin: 0 auto;
+            grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
+            grid-auto-rows: minmax(180px, auto); /* Consistent row height for better layout */
+        }
+
+        /* 3. Grid Item Styling */
+        .grid-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--color-medium-grey);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Content Styling */
+        .card-header {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-dark-grey);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            color: var(--color-accent);
+        }
+
+        .card-text {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            flex-grow: 1; /* Allows text to push other content down */
+        }
+
+        .social-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--color-dark-grey);
+        }
+
+        /* Accent Color Highlights */
+        .accent-text {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        /* 4. Desktop Layout (Grid Span) */
+        .card-profile { grid-column: span 2; grid-row: span 2; }
+        .card-location { grid-column: span 1; grid-row: span 1; justify-content: center; align-items: center; text-align: center; }
+        .card-techstack { grid-column: span 1; grid-row: span 2; }
+        .card-case-study { grid-column: span 2; grid-row: span 1; }
+        .card-hobby { grid-column: span 1; grid-row: span 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .card-playlist { grid-column: span 4; grid-row: span 1; }
+
+        /* Utility for Centering in small cards */
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+
+        /* 5. Mobile Responsiveness (Stacked Layout) */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr; 
+                grid-auto-rows: minmax(150px, auto); 
+                padding: 0;
+            }
+
+            .grid-card {
+                grid-column: span 1 !important;
+                grid-row: auto !important;
+                min-height: 150px;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="bento-grid">
+        
+        <section class="grid-card card-profile">
+            <h2 class="card-title">👋 Hello, I'm NIK NURHUSNINA</h2>
+            <div class="card-text">
+                <p>
+                    <span class="card-header">Program / Year</span>
+                    <br>
+                    <span class="accent-text">BSc. Food Science</span>, Year 4
+                </p>
+                <p style="margin-top: 15px; margin-bottom: 25px;">
+                    Tagline: <span class="accent-text">'Innovating food safety.'</span> Focused on practical lab skills and quality assurance.
+                </p>
+            </div>
+            <div class="social-links">
+                <span class="card-header">Connect</span>
+                <p style="margin-top: 5px;">
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">UMT Portal</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="grid-card card-location center-content">
+            <p class="card-header">Current Campus</p>
+            <h3 class="card-title" style="font-size: 1.8rem;">UMT, Kuala Nerus</h3>
+            <div class="card-text" style="font-size: 0.9rem;">
+                <span class="accent-text">Current Time: [2:31 PM]</span>
+            </div>
+        </section>
+
+        <section class="grid-card card-techstack">
+            <h2 class="card-title">🔬 Core Competencies</h2>
+            <div class="card-text">
+                <p class="card-header">Key Skills & Subjects</p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                    <li style="margin-bottom: 8px;">• <span class="accent-text">Food Chemistry</span> (Advanced)</li>
+                    <li style="margin-bottom: 8px;">• Food <span class="accent-text">Microbiology</span></li>
+                    <li style="margin-bottom: 8px;">• Data Management (<span class="accent-text">Excel</span>)</li>
+                    <li style="margin-bottom: 8px;">• Instrumental Lab Analysis</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="grid-card card-case-study">
+            <p class="card-header">Featured Research</p>
+            <h2 class="card-title">'Starch Gelatinization in Local Kuih'</h2>
+            <div class="card-text">
+                <p>Analyzing texture profiles, moisture migration, and retrogradation effects in traditional delicacy, **Kuih Lapis**, focusing on improving shelf-stability and quality control.</p>
+                
+            </div>
+        </section>
+
+        <section class="grid-card card-hobby center-content">
+            <p class="card-header">Off-Campus Activity</p>
+            <h3 class="card-title" style="font-size: 1.5rem;">MAYANG MALL</h3>
+            <div class="card-text" style="font-size: 0.9rem;">
+                Retail Therapy & <span class="accent-text">Observation</span>
+            </div>
+        </section>
+
+        <section class="grid-card card-playlist">
+            <h2 class="card-title" style="font-size: 1.2rem; margin-bottom: 0;">🎧 Focus Playlist</h2>
+            <p class="card-header" style="margin-top: 5px;">Ambient & Deep Focus for Lab Work</p>
+            <div class="card-text" style="font-style: italic; font-size: 0.9rem; margin-top: 10px; color: var(--color-dark-grey);">
+                [ Placeholder for a real embedded music player (e.g., Lofi Hip-Hop or Classical Music). ]
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
