@@ -63,32 +63,28 @@
             box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
         }
         
-        /* --- START: PROFILE CARD BACKGROUND IMAGE STYLES --- */
+        /* --- PROFILE CARD BACKGROUND IMAGE STYLES --- */
         .card-profile {
             grid-column: span 2; 
             grid-row: span 2; 
-            
-            /* Background Image Properties */
-            background-image: url('bg.jpg'); /* 1. Set the image path */
-            background-size: cover;          /* 2. Ensure image covers the entire card */
-            background-position: center;     /* 3. Center the image */
-            background-repeat: no-repeat;    /* 4. Prevent image tiling */
-            color: var(--color-white);       /* 5. Change text color for contrast */
+            background-image: url('bg.jpg'); 
+            background-size: cover;          
+            background-position: center;     
+            background-repeat: no-repeat;    
+            color: var(--color-white);       
         }
 
-        /* Adjust colors inside the profile card for readability over the image */
         .card-profile .card-title,
         .card-profile .accent-text,
         .card-profile .social-links a {
-            color: #b7e0ff; /* A lighter blue accent */
+            color: #b7e0ff; 
         }
         
         .card-profile .card-header,
         .card-profile .card-text {
-            color: #d1d9e2; /* Light grey text */
+            color: #d1d9e2; 
         }
         
-        /* Optional: Add a subtle overlay for better text readability */
         .card-profile::before {
             content: '';
             position: absolute;
@@ -96,11 +92,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.35); /* Dark semi-transparent overlay */
+            background: rgba(0, 0, 0, 0.35); 
             border-radius: var(--border-radius);
             z-index: -1;
         }
-        /* --- END: PROFILE CARD BACKGROUND IMAGE STYLES --- */
 
         /* Card Content Styling (General) */
         .card-header {
@@ -145,6 +140,39 @@
             font-weight: 700;
         }
 
+        /* Case Study Button Specifics */
+        .case-study-flex {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .case-study-info {
+            flex: 1;
+        }
+
+        .btn-try-app {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 80, 157, 0.2);
+        }
+
+        .btn-try-app:hover {
+            background-color: #003f7a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 80, 157, 0.3);
+            color: var(--color-white);
+        }
+
         /* 4. Desktop Layout (Grid Span) */
         .card-location { grid-column: span 1; grid-row: span 1; justify-content: center; align-items: center; text-align: center; }
         .card-techstack { grid-column: span 1; grid-row: span 1; }
@@ -153,7 +181,6 @@
         .card-reflection { grid-column: span 1; grid-row: span 1; }
         .card-playlist { grid-column: span 4; grid-row: span 1; }
 
-        /* Utility for Centering in small cards */
         .center-content {
             display: flex;
             flex-direction: column;
@@ -163,23 +190,26 @@
             height: 100%;
         }
 
-
-        /* 5. Mobile Responsiveness (Stacked Layout) */
+        /* 5. Mobile Responsiveness */
         @media (max-width: 768px) {
             .bento-grid {
                 grid-template-columns: 1fr; 
                 grid-auto-rows: minmax(150px, auto); 
-                padding: 0;
             }
 
             .grid-card {
                 grid-column: span 1 !important;
                 grid-row: auto !important;
-                min-height: 150px;
             }
 
-            .card-title {
-                font-size: 1.3rem;
+            .case-study-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-try-app {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -232,10 +262,16 @@
         
         <section class="grid-card card-case-study">
             <p class="card-header">Featured Research</p>
-            <h2 class="card-title">'Starch Gelatinization in Local Kuih'</h2>
-            <div class="card-text">
-                <p>Analyzing texture profiles, moisture migration, and retrogradation effects in traditional delicacy, **Kuih Lapis**, focusing on improving shelf-stability and quality control.</p>
-                
+            <div class="case-study-flex">
+                <div class="case-study-info">
+                    <h2 class="card-title" style="font-size: 1.3rem;">'Starch Gelatinization in Local Kuih'</h2>
+                    <div class="card-text" style="font-size: 0.95rem;">
+                        <p>Analyzing texture profiles and moisture migration in **Kuih Lapis** to improve shelf-stability.</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://s79308.github.io/lab-timer-app/index.html" class="btn-try-app" target="_blank">Try My Lab Timer App</a>
+                </div>
             </div>
         </section>
 
@@ -249,18 +285,17 @@
 
         <section class="grid-card card-reflection">
             <p class="card-header">My Research Vision</p>
-            <h2 class="card-title" style="font-size: 1.3rem; margin-bottom: 0;">Why Food Tech Matters in Malaysia</h2>
+            <h2 class="card-title" style="font-size: 1.3rem; margin-bottom: 0;">Why Food Tech Matters</h2>
             <div class="card-text" style="font-size: 0.9rem; margin-top: 8px;">
-                Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.
+                Sustainable food security is crucial for our future. By optimizing local processing, we reduce waste.
             </div>
         </section>
-
 
         <section class="grid-card card-playlist">
             <h2 class="card-title" style="font-size: 1.2rem; margin-bottom: 0;">🎧 Focus Playlist</h2>
             <p class="card-header" style="margin-top: 5px;">Ambient & Deep Focus for Lab Work</p>
-            <div class="card-text" style="font-style: italic; font-size: 0.9rem; margin-top: 10px; color: var(--color-dark-grey);">
-                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/312z6PZ8wwREck8613PkJk?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div class="card-text" style="margin-top: 10px;">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/312z6PZ8wwREck8613PkJk?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </section>
 
