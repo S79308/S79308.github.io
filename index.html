@@ -300,8 +300,27 @@
         </section>
 
     </main>
+ <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            hours = hours % 12;
+            hours = hours ? hours : 12; // convert 0 to 12
+            
+            const timeString = `Current Time: ${hours}:${minutes} ${ampm}`;
+            document.getElementById('live-clock').textContent = timeString;
+        }
+
+        // Run immediately
+        updateClock();
+        // Update every 1 minute (or 1000 for every second)
+        setInterval(updateClock, 1000);
+    </script>
 
 </body>
-
 </html>
+
 
